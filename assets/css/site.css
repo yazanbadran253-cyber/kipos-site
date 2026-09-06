@@ -1,0 +1,751 @@
+/* Kipos marketing site.
+   Palette and radii are lifted from the app, not invented:
+   src/theme.js (C / X / SOFT / N) and Kipos-AppStore-1024.svg.
+   Blue is the brand (it is the icon's leaf); green is the growth accent. */
+
+:root {
+  /* ink */
+  --ink: #0f1518;
+  --body: #4a555d;
+  /* Darker than the app's #69737a on purpose. The lede sits on the hero
+     gradient, which bottoms out at #dfe5e9; #69737a scores only 3.81:1 there.
+     This clears 4.5:1 on every ground the site uses, white through #dfe5e9. */
+  --muted: #5b666d;
+  /* Non-text only: borders, chevrons, rules. At 3.09:1 on white it clears the
+     3:1 bar for UI components but fails the 4.5:1 one for body text, and no
+     grey lighter than --muted can pass that. Small text uses --muted. */
+  --faint: #8a949b;
+
+  /* surfaces */
+  --card: #ffffff;
+  --line: #f0f3f5;
+  --hair: #dbe2e7;
+  --chip: #eef2f4;
+  --bg-top: #f6f8fa;
+  --bg-bot: #eef2f5;
+
+  /* brand blue */
+  --blue: #0093d0;
+  --blue-deep: #007db9;   /* 4.53:1 with white ON it - button fill only */
+  /* Blue TEXT on a light ground is the opposite test, and --blue-deep fails it
+     (3.57:1 on the hero's dark end). Links and the button hover share this. */
+  --blue-text: #00699c;
+  --blue-btn: #008dc9;    /* decorative fills only, never behind white text */
+  --blue-light: #00b3f2;
+  --leaf: #51b7f9;
+  --blue-soft: #e0eff9;
+
+  /* the green splash */
+  --green: #3b9555;
+  /* A shade under the app's #137738, which lands at 4.44:1 where the eyebrow
+     sits on the hero gradient's dark end. This clears 4.5 everywhere. */
+  --green-deep: #126f34;
+  --green-soft: #e2efe4;
+
+  /* dark */
+  --dark: #0c1114;
+  --dark-alt: #1a2228;
+
+  /* radii - Organic Biophilic: 16-24px */
+  --r-sm: 12px;
+  --r: 16px;
+  --r-lg: 24px;
+  --r-pill: 999px;
+
+  /* spacing - spacious scale */
+  --s1: 8px;
+  --s2: 16px;
+  --s3: 24px;
+  --s4: 40px;
+  --s5: 64px;
+  --s6: 96px;
+
+  --shadow-card: 0 1px 2px rgba(15, 21, 24, .04), 0 8px 24px rgba(15, 21, 24, .06);
+  --shadow-lift: 0 2px 6px rgba(15, 21, 24, .06), 0 20px 50px rgba(15, 21, 24, .11);
+
+  --wrap: 1120px;
+  --ease: cubic-bezier(.22, .61, .36, 1);
+}
+
+/* ---- reset ---- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+}
+
+body {
+  margin: 0;
+  font-family: 'TikTok Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--body);
+  background: var(--bg-top);
+  -webkit-font-smoothing: antialiased;
+}
+
+img, svg { max-width: 100%; }
+img { height: auto; display: block; }
+
+h1, h2, h3 {
+  color: var(--ink);
+  line-height: 1.12;
+  letter-spacing: -0.022em;
+  margin: 0;
+  text-wrap: balance;
+}
+
+h1 { font-size: clamp(2.3rem, 6.2vw, 4rem); font-weight: 800; max-inline-size: 18ch; }
+h2 { font-size: clamp(1.7rem, 4.2vw, 2.7rem); font-weight: 800; max-inline-size: 20ch; }
+h3 { font-size: 1.2rem; font-weight: 700; line-height: 1.3; }
+p { margin: 0; }
+
+a { color: var(--blue-text); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.wrap {
+  width: 100%;
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding-inline: var(--s3);
+}
+
+.eyebrow {
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: var(--green-deep);
+  margin-bottom: var(--s2);
+}
+
+.lede {
+  font-size: 1.13rem;
+  color: var(--muted);
+  max-inline-size: 56ch;
+  line-height: 1.62;
+}
+
+.skip {
+  /* fixed, not absolute: absolute positions it against the document, so
+     focusing it part-way down a page parks it far above the viewport. */
+  position: fixed;
+  left: -9999px;
+  top: 0;
+  background: var(--ink);
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: var(--r-sm);
+  z-index: 100;
+}
+.skip:focus { left: 12px; top: 12px; }
+
+/* ---- store badge ---- */
+
+.storebadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 56px;
+  padding: 10px 24px 10px 20px;
+  border-radius: var(--r-pill);
+  background: var(--dark);
+  color: #fff;
+  text-decoration: none;
+  box-shadow: var(--shadow-card);
+  transition: transform .2s var(--ease), box-shadow .2s var(--ease);
+}
+a.storebadge { cursor: pointer; }
+a.storebadge:hover { transform: translateY(-2px); box-shadow: var(--shadow-lift); text-decoration: none; }
+.storebadge svg { flex: none; fill: #fff; }
+.storebadge__t { display: flex; flex-direction: column; line-height: 1.15; text-align: left; }
+.storebadge__t small { font-size: .7rem; font-weight: 500; color: #b8c2c9; letter-spacing: .01em; }
+.storebadge__t strong { font-size: 1.16rem; font-weight: 700; letter-spacing: -0.01em; }
+
+.badge-note {
+  font-size: .88rem;
+  color: var(--muted);
+  margin-top: var(--s2);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 52px;
+  padding: 12px 28px;
+  border-radius: var(--r-pill);
+  background: var(--blue-deep);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  font-size: 1.02rem;
+  border: 0;
+  cursor: pointer;
+  transition: background .18s var(--ease), transform .18s var(--ease);
+}
+.btn:hover { background: var(--blue-text); text-decoration: none; transform: translateY(-1px); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 2px solid var(--hair);
+}
+.btn-ghost:hover { background: var(--card); border-color: var(--blue); color: var(--blue-text); }
+
+/* ---- nav ---- */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(246, 248, 250, .82);
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+.nav__in {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+  min-height: 68px;
+  padding-block: 10px;
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  font-size: 1.22rem;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  margin-right: auto;
+}
+.brand { min-height: 44px; }
+.brand:hover { text-decoration: none; }
+.brand img { width: 34px; height: 34px; border-radius: 9px; }
+
+.nav__links { display: flex; gap: 4px; align-items: center; }
+.nav__links a {
+  color: var(--body);
+  font-weight: 600;
+  font-size: .97rem;
+  padding: 10px 14px;
+  border-radius: var(--r-sm);
+  transition: color .18s var(--ease), background .18s var(--ease);
+}
+.nav__links a:hover { color: var(--ink); background: var(--chip); text-decoration: none; }
+.nav__links a[aria-current='page'] { color: var(--blue-text); }
+
+.nav .storebadge { min-height: 46px; padding: 7px 18px 7px 15px; }
+.nav .storebadge__t small { font-size: .62rem; }
+.nav .storebadge__t strong { font-size: 1rem; }
+
+/* Narrow: the links drop to their own row rather than disappearing. Hiding them
+   left the logo alone up there, and FAQ/Press/Support only reachable by
+   scrolling to the footer. Scrolls sideways if the row runs long; no JS. */
+@media (max-width: 900px) {
+  /* the nav is two rows here, so anchors need a deeper landing offset */
+  html { scroll-padding-top: 116px; }
+  .nav__in { flex-wrap: wrap; gap: 6px var(--s2); min-height: 0; padding-block: 12px 8px; }
+  .nav__links {
+    order: 3;
+    width: 100%;
+    gap: 2px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    padding-bottom: 2px;
+  }
+  .nav__links::-webkit-scrollbar { display: none; }
+  .nav__links a { padding: 8px 12px; white-space: nowrap; }
+}
+@media (max-width: 560px) {
+  .nav .storebadge { display: none; }
+}
+
+/* ---- hero ---- */
+
+.hero {
+  /* the design file's own ground: design/Kipos Home.dc.html */
+  background: radial-gradient(120% 90% at 50% 0%, #eef3f6 0%, #e4eaee 60%, #dfe5e9 100%);
+  border-bottom: 1px solid var(--hair);
+  overflow: hidden;
+}
+.hero__in {
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap: var(--s5);
+  align-items: center;
+  padding-block: var(--s6) 0;
+}
+.hero__copy { padding-bottom: var(--s6); }
+.hero h1 { margin-bottom: var(--s3); }
+.hero .lede { margin-bottom: var(--s4); }
+
+.hero__art { position: relative; display: flex; justify-content: center; align-items: flex-end; }
+.hero__art::after {
+  content: '';
+  position: absolute;
+  inset: auto -10% -12% -10%;
+  height: 62%;
+  background: radial-gradient(60% 60% at 50% 100%, rgba(0, 147, 208, .16), transparent 70%);
+  pointer-events: none;
+}
+
+@media (max-width: 900px) {
+  .hero__in { grid-template-columns: 1fr; gap: var(--s4); padding-block: var(--s5) 0; text-align: center; }
+  .hero__copy { padding-bottom: 0; }
+  .hero h1, .hero .lede { margin-inline: auto; }
+  .hero__art { max-width: 320px; margin-inline: auto; }
+}
+
+/* ---- phone frame ---- */
+
+.phone {
+  position: relative;
+  width: 100%;
+  max-width: 310px;
+  padding: 10px;
+  border-radius: 46px;
+  background: linear-gradient(160deg, var(--dark-alt), var(--dark));
+  box-shadow: var(--shadow-lift);
+}
+.phone img { border-radius: 37px; width: 100%; }
+.phone::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 82px;
+  height: 22px;
+  border-radius: var(--r-pill);
+  background: var(--dark);
+  z-index: 2;
+}
+
+/* ---- generic section ---- */
+
+.sec { padding-block: var(--s6); }
+.sec--tint { background: linear-gradient(180deg, var(--bg-top), var(--bg-bot)); }
+.sec__head { max-width: 660px; margin-bottom: var(--s5); }
+.sec__head.center { margin-inline: auto; text-align: center; }
+/* h2 and .lede both cap their own inline size, so centring the text is not
+   enough -- the box itself has to be centred too. */
+.sec__head.center > * { margin-inline: auto; }
+.sec__head h2 { margin-bottom: var(--s2); }
+.sec__head .lede { margin-top: var(--s2); }
+
+/* ---- how it works ---- */
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s3);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.step {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: var(--s4) var(--s3) var(--s3);
+  box-shadow: var(--shadow-card);
+}
+.step__n {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: var(--r-pill);
+  background: var(--green-soft);
+  color: var(--green-deep);
+  font-weight: 800;
+  font-size: 1.16rem;
+  margin-bottom: var(--s3);
+}
+.step h3 { margin-bottom: 10px; }
+.step p { color: var(--muted); font-size: 1rem; }
+
+@media (max-width: 820px) { .steps { grid-template-columns: 1fr; } }
+
+/* ---- features ---- */
+
+.features { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s3); }
+.feature {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: var(--s3);
+  box-shadow: var(--shadow-card);
+  transition: transform .22s var(--ease), box-shadow .22s var(--ease);
+}
+.feature:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); }
+.feature__ico {
+  display: grid;
+  place-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 15px;
+  margin-bottom: var(--s3);
+}
+.feature__ico svg { width: 25px; height: 25px; }
+.i-water { background: var(--blue-soft); color: var(--blue); }
+.i-leaf  { background: var(--green-soft); color: var(--green); }
+.i-sun   { background: #f7eee1; color: #c78b28; }
+.i-cam   { background: #ece7f7; color: #8864c0; }
+.i-share { background: var(--blue-soft); color: var(--blue-deep); }
+.feature h3 { margin-bottom: 8px; }
+.feature p { color: var(--muted); font-size: 1rem; }
+
+@media (max-width: 980px) { .features { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .features { grid-template-columns: 1fr; } }
+
+/* ---- showcase: one sticky phone, three screens ---- */
+
+.swap__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s6);
+  align-items: start;
+}
+
+.swap__block h2 { margin-bottom: var(--s3); }
+
+.ticks { list-style: none; margin: var(--s3) 0 0; padding: 0; display: grid; gap: 12px; }
+.ticks li { display: flex; gap: 12px; align-items: flex-start; color: var(--body); font-size: 1.02rem; }
+.ticks svg { flex: none; width: 22px; height: 22px; color: var(--green); margin-top: 2px; }
+
+/* All three screens are absolute, so the box needs its own height — hence the
+   aspect ratio, taken from the screenshots themselves (620x1341). Absolute
+   positioning for every one of them is what lets z-index order the crossfade;
+   a static first child would ignore z-index entirely. */
+.swap__screens { position: relative; aspect-ratio: 620 / 1341; }
+.swap__screens img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 37px;
+  opacity: 0;
+}
+/* Without JavaScript exactly one screenshot shows, which is the right fallback:
+   one real screen beats three stacked on top of each other. */
+.swap__screens img:first-child { opacity: 1; }
+
+@media (min-width: 901px) {
+  .swap__inline { display: none; }
+  .swap__block {
+    /* min-height, never height — the copy has to be free to grow when the
+       reader has larger system text. */
+    min-height: 82vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-block: var(--s5);
+  }
+  .swap__stage {
+    position: sticky;
+    /* Height must be the phone's own, not the viewport's. A sticky element
+       releases when the bottom of its container reaches it, so a taller box
+       unsticks that much earlier — a 757px stage let go a whole screen before
+       the last block finished, and the phone slid away mid-sentence.
+       Centre it with top instead, with a floor so it never hides under the
+       nav on a short window. */
+    top: max(88px, calc(50vh - 310px));
+    align-self: start;
+    display: flex;
+    justify-content: center;
+  }
+  .swap__stage .phone { max-width: 296px; }
+  /* The stage unsticks when the bottom of this column reaches it, so the column
+     has to out-run the last block by roughly half the phone's height. Without
+     this the phone tears loose and slides under the nav while the last block is
+     still the thing you are reading. */
+  .swap__copy { padding-bottom: 28vh; }
+}
+
+@media (max-width: 900px) {
+  .swap__grid { grid-template-columns: 1fr; gap: 0; }
+  .swap__stage { display: none; }
+  .swap__block { padding-block: var(--s4); }
+  .swap__inline { display: flex; justify-content: center; margin-top: var(--s4); }
+  .swap__inline .phone { max-width: 280px; }
+}
+
+/* ---- phone motion layers ---- */
+
+/* One property per layer. Parallax writes y, tilt writes rotation, float runs
+   the idle bob in CSS, and .phone keeps the entrance. Put two of these on the
+   same element and the tweens overwrite each other mid-scroll. */
+.phone-par, .phone-tilt, .phone-float { display: flex; justify-content: center; }
+.hero__art { perspective: 1100px; }
+.phone-tilt { transform-style: preserve-3d; will-change: transform; }
+.phone-par { will-change: transform; }
+
+/* The hero entrance is CSS on purpose. GSAP arrives over the network; anything
+   above the fold that waits for it flashes in un-animated first. */
+/* Transform only — no opacity. This runs above the fold, and `backwards` fill
+   holds the from-state until the animation plays. Fade the headline and any
+   context that never advances the animation clock (a crawler, a link-preview
+   bot, a screenshot service) captures a blank hero. A slide cannot hide text:
+   worst case the words sit 18px low. Below the fold GSAP does the fading, and
+   that is safe because GSAP missing means no hiding happens at all. */
+@keyframes hero-in {
+  from { transform: translateY(18px); }
+  to   { transform: none; }
+}
+/* Gated on no-preference, not merely disabled under reduce. `backwards` fill
+   holds the element at opacity 0 until the animation runs, so if the animation
+   clock never advances the hero headline is invisible — the worst possible
+   failure, above the fold. Opting IN means anything that does not match this
+   query, including a browser that has never heard of it, renders the hero
+   normally and the motion is what is missing rather than the words. */
+@media (prefers-reduced-motion: no-preference) {
+  .hero__copy > * { animation: hero-in .7s var(--ease) backwards; }
+  .hero__copy > *:nth-child(1) { animation-delay: .04s; }
+  .hero__copy > *:nth-child(2) { animation-delay: .10s; }
+  .hero__copy > *:nth-child(3) { animation-delay: .16s; }
+  .hero__copy > *:nth-child(4) { animation-delay: .22s; }
+  .hero__copy > *:nth-child(5) { animation-delay: .28s; }
+  .hero .phone { animation: hero-in .9s var(--ease) .18s backwards; }
+  .phone-float { animation: phone-float 4.5s ease-in-out infinite alternate; }
+}
+
+@keyframes phone-float {
+  from { transform: translateY(-6px); }
+  to   { transform: translateY(6px); }
+}
+
+/* ---- faq ---- */
+
+.faq { display: grid; gap: 12px; max-width: 780px; }
+.faq.center { margin-inline: auto; }
+.faq details {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+.faq summary {
+  cursor: pointer;
+  list-style: none;
+  padding: var(--s3);
+  font-weight: 700;
+  color: var(--ink);
+  font-size: 1.04rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--s2);
+  min-height: 44px;
+  transition: color .18s var(--ease);
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary:hover { color: var(--blue-text); }
+.faq summary::after {
+  content: '';
+  flex: none;
+  width: 11px;
+  height: 11px;
+  border-right: 2.5px solid var(--faint);
+  border-bottom: 2.5px solid var(--faint);
+  transform: rotate(45deg) translate(-2px, -2px);
+  transition: transform .22s var(--ease);
+}
+.faq details[open] summary::after { transform: rotate(225deg) translate(-2px, -2px); }
+.faq .a { padding: 0 var(--s3) var(--s3); color: var(--muted); font-size: 1rem; }
+.faq .a p + p { margin-top: 12px; }
+.faq-more { text-align: center; margin-top: var(--s4); }
+
+.faqgroup + .faqgroup { margin-top: var(--s5); }
+.faqgroup h2 { font-size: 1.5rem; margin-bottom: var(--s3); }
+
+/* ---- cta band ---- */
+
+.cta {
+  background: linear-gradient(160deg, var(--dark-alt), var(--dark));
+  color: #fff;
+  text-align: center;
+  padding-block: var(--s6);
+}
+.cta h2 { color: #fff; margin-inline: auto; margin-bottom: var(--s3); }
+.cta p { color: #9fabb4; max-width: 46ch; margin: 0 auto var(--s4); }
+.cta .storebadge { background: #fff; color: var(--ink); }
+.cta .storebadge svg { fill: var(--ink); }
+.cta .storebadge__t small { color: var(--muted); }
+.cta .badge-note { color: #7d8992; }
+
+/* ---- inner page header ---- */
+
+.phead {
+  background: radial-gradient(120% 100% at 50% 0%, #eef3f6 0%, #e4eaee 100%);
+  border-bottom: 1px solid var(--hair);
+  padding-block: var(--s5);
+}
+.phead h1 { font-size: clamp(2rem, 5vw, 3.1rem); margin-bottom: var(--s2); }
+
+/* ---- forms ---- */
+
+.formcard {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-card);
+  padding: var(--s4);
+  max-width: 620px;
+  margin-inline: auto;
+}
+.field { margin-bottom: var(--s3); }
+.field label {
+  display: block;
+  font-weight: 700;
+  color: var(--ink);
+  font-size: .96rem;
+  margin-bottom: 8px;
+}
+.field input, .field textarea {
+  width: 100%;
+  font: inherit;
+  font-size: 1rem;
+  color: var(--ink);
+  background: #fff;
+  border: 2px solid var(--hair);
+  border-radius: 14px;
+  padding: 13px 15px;
+  min-height: 52px;
+  transition: border-color .18s var(--ease), box-shadow .18s var(--ease);
+}
+.field textarea { min-height: 150px; resize: vertical; line-height: 1.55; }
+.field input:focus, .field textarea:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 4px var(--blue-soft);
+}
+.field .help { font-size: .88rem; color: var(--muted); margin-top: 7px; }
+
+.formstatus {
+  margin-top: var(--s3);
+  font-size: .95rem;
+  color: var(--green-deep);
+  font-weight: 600;
+  min-height: 1.4em;
+}
+.fallback { margin-top: var(--s3); font-size: .95rem; color: var(--muted); }
+
+/* ---- press kit ---- */
+
+.kit { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: var(--s3); }
+.kit__item {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: var(--s3);
+  box-shadow: var(--shadow-card);
+}
+.kit__item h3 { font-size: 1.02rem; margin-bottom: 8px; }
+.kit__item a { display: inline-flex; align-items: center; min-height: 44px; }
+.kit__item p { font-size: .94rem; color: var(--muted); margin-bottom: 12px; }
+
+.swatches { display: flex; flex-wrap: wrap; gap: 10px; margin-top: var(--s2); }
+.sw { text-align: center; font-size: .74rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.sw span { display: block; width: 62px; height: 44px; border-radius: 11px; border: 1px solid var(--hair); margin-bottom: 6px; }
+
+.boiler {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--green);
+  border-radius: var(--r);
+  padding: var(--s3);
+  color: var(--body);
+  font-size: 1rem;
+  max-width: 720px;
+}
+
+/* ---- footer ---- */
+
+.foot { background: var(--card); border-top: 1px solid var(--hair); padding-block: var(--s5) var(--s4); }
+.foot__grid {
+  display: grid;
+  grid-template-columns: 1.5fr repeat(3, 1fr);
+  gap: var(--s4);
+  padding-bottom: var(--s4);
+  border-bottom: 1px solid var(--line);
+}
+.foot__brand p { color: var(--muted); font-size: .95rem; margin-top: var(--s2); max-width: 30ch; }
+.foot__h {
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 var(--s2);
+}
+.foot ul { list-style: none; margin: 0; padding: 0; display: grid; }
+/* 44px rows: the drawn link stays the same size, the tap area does not. */
+.foot ul a { color: var(--body); font-size: .97rem; display: inline-flex; align-items: center; min-height: 44px; }
+.foot ul a:hover { color: var(--blue-text); }
+
+.foot__end {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--s3);
+  padding-top: var(--s3);
+  flex-wrap: wrap;
+}
+.foot__end p { color: var(--muted); font-size: .9rem; }
+.social { display: flex; gap: 6px; }
+.social a {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--r-sm);
+  color: var(--muted);
+  transition: color .18s var(--ease), background .18s var(--ease);
+}
+.social a:hover { color: var(--ink); background: var(--chip); }
+.social svg { width: 20px; height: 20px; }
+
+@media (max-width: 820px) {
+  .foot__grid { grid-template-columns: 1fr 1fr; gap: var(--s4) var(--s3); }
+  .foot__brand { grid-column: 1 / -1; }
+}
+@media (max-width: 460px) {
+  .foot__grid { grid-template-columns: 1fr; }
+}
+
+/* ---- motion ---- */
+
+/* Elements start visible. JS adds .reveal only when motion is allowed,
+   so a failed script or a no-JS browser shows the finished page. */
+.reveal { opacity: 0; transform: translateY(18px); }
+.reveal.in { opacity: 1; transform: none; transition: opacity .5s var(--ease), transform .5s var(--ease); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-delay: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+  /* The idle bob is infinite, so capping duration is not enough — stop it. */
+  .phone-float { animation: none; }
+  .reveal { opacity: 1; transform: none; }
+}
