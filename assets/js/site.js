@@ -1,16 +1,15 @@
 /* Kipos site. Three small jobs, no dependencies. */
 
 /* ── THE LAUNCH SWITCH ──────────────────────────────────────────────
-   Kipos is not released yet, so there is no App Store page and
-   every badge renders as a non-clickable "Coming soon" pill.
+   Flipped 2026-09-08, the day Kipos 1.0 was released. Every badge on
+   every page is a real App Store link now, the kicker reads "Download
+   on the", and the "iPhone first." notes are removed.
 
-   On release day, set this to the URL and every badge on every page
-   becomes a real link. That is the only edit needed.
+   The HTML still ships the honest "coming soon" state, so setting this
+   back to null is a complete rollback — no markup change needed.
 
-     const APP_STORE_URL = 'https://apps.apple.com/app/id6798338126';
-
-   Apple ID 6798338126 — CODEX_BACKLOG.md:719 in the app repo. */
-const APP_STORE_URL = null;
+   Apple ID 6798338126 — see the app repo's CODEX_BACKLOG.md. */
+const APP_STORE_URL = 'https://apps.apple.com/app/id6798338126';
 
 const SUPPORT_EMAIL = 'support@getgardenai.com';
 
