@@ -59,7 +59,7 @@
 
       <h1 id="kipos-privacy-policy">Kipos Privacy Policy</h1>
 
-<p><strong>Effective Date: August 14, 2026</strong></p>
+<p><strong>Effective Date: September 11, 2026</strong></p>
 
 <p>This Privacy Policy (the “Policy”) describes how Kipos (“Kipos,” “we,”
 “our,” or “us”) collects, uses, discloses, and otherwise processes your personal
@@ -156,14 +156,43 @@ those same logs, and that record can include your account identifier.</li>
   <li><strong>Service usage counters.</strong> We count how many plant scans each account makes
 per day, so that we can enforce a fair-use limit on a feature that costs us
 money to run.</li>
+  <li><strong>Product analytics.</strong> We use <strong>PostHog</strong>, a product-analytics service, to
+understand how the app is used and to find problems. When you use Kipos, the
+app sends PostHog the screens you open, the actions you take (for example
+"started a plant scan" or "logged a watering"), and a small set of technical
+details: app version, operating system and version, language, time zone, and
+screen size. It does <strong>not</strong> send your email address, your name, your plant
+names or notes, your photos, the text you type, or your device model. Counts
+are sent as ranges and errors as categories, not as their contents. Until you
+save your progress, this activity is tied to a random identifier that PostHog
+generates; once you sign in, it is tied to your Kipos account identifier —
+never your email — so that one account's activity is seen as one. PostHog
+works out your <strong>country and city from your IP address and then discards the
+address</strong>; it does not keep your IP. Our own servers also report the outcome
+of each plant-identification and care-plan request — how long it took,
+whether it succeeded, and how much AI capacity it used — but never the photo,
+your answers, or the result.</li>
+  <li><strong>Session replay.</strong> For a small sample of sessions — at most <strong>1 in 10</strong> in
+the released app — PostHog also records a short screen replay: taps,
+scrolling, and timing, so we can see how a screen behaves. Replay runs on a
+limited set of screens and never on sign-in, camera, scan-result,
+subscription, or account screens. <strong>Everything you type and every image is
+hidden in the recording before it leaves your device.</strong> Console logs and
+network traffic are not recorded. Replays are deleted after <strong>30 days</strong>.</li>
+  <li><strong>Your control.</strong> The <strong>Share analytics</strong> switch on your Profile screen turns
+both of these off at any time. Turning it off stops collection immediately;
+it does not delete what was already collected, which ages out on the schedule
+under <a href="#how-long-we-keep-your-information">How Long We Keep Your Information</a>.
+If you have signed in, deleting your account also deletes your PostHog
+profile and its recordings; an anonymous account's activity is tied only to
+the random identifier above and ages out on the same schedule. The switch is
+kept on your device, so it stays off after you sign out or delete your
+account.</li>
 </ul>
 
-<p><strong>No third-party analytics or advertising.</strong> Kipos is a <strong>native mobile app</strong>
-and does not use website cookies. As of the Effective Date above, the app
-contains <strong>no third-party analytics, attribution, or advertising SDKs</strong>, and we
-do not track you across other apps or websites. If we ever add an analytics or
-crash-reporting provider, we will update this Policy first and, where the law
-requires it, ask for your consent.</p>
+<p><strong>No advertising or cross-app tracking.</strong> Kipos is a <strong>native mobile app</strong> and
+does not use website cookies. It contains no advertising or attribution SDKs,
+and we do not track you across other apps or websites.</p>
 
 <h3 id="information-from-third-parties">Information From Third Parties</h3>
 
@@ -335,9 +364,13 @@ described below:</p>
   <li><strong>Service providers.</strong> We share information with vendors who process it on our
 behalf to run the Services, including our backend, database, authentication and
 photo-storage host (<strong>Supabase</strong>), our AI provider for plant identification and
-care personalization (<strong>Anthropic</strong>), and our email delivery provider
-(<strong>Resend</strong>), which sends the one-time codes described above. These vendors are
-permitted to use the information only to provide services to us.</li>
+care personalization (<strong>Anthropic</strong>), our email delivery provider
+(<strong>Resend</strong>), which sends the one-time codes described above, and our
+product-analytics provider (<strong>PostHog</strong>), which receives the usage data and
+sampled screen replays described under
+<a href="#information-we-collect-automatically">Information We Collect Automatically</a>.
+These vendors are permitted to use the information only to provide services
+to us.</li>
   <li><strong>App store and subscription-management provider.</strong> We share the information
 described under <a href="#payment-information">Payment Information</a> with <strong>RevenueCat</strong>
 so that it can tell the app whether your subscription is active. Your payment
@@ -398,6 +431,11 @@ photo-library permissions at any time in your device settings. Some features
 (scanning and adding plant photos) will not work without them.</li>
   <li><strong>Notifications.</strong> You can turn plant-care reminders on or off in the app and
 manage notification permissions in your device settings.</li>
+  <li><strong>Analytics.</strong> The <strong>Share analytics</strong> switch on your Profile screen turns
+product analytics and session replay off. It takes effect immediately, stays
+off after you sign out or delete your account, and you can turn it back on at
+any time. See
+<a href="#information-we-collect-automatically">Information We Collect Automatically</a>.</li>
   <li><strong>Subscription.</strong> You can cancel your subscription at any time, which stops
 future charges. Because your subscription is bought through the app store,
 cancel it in that platform’s subscription settings — deleting the app does not
@@ -436,6 +474,12 @@ tax, accounting, and anti-fraud law requires, and longer where a chargeback,
 dispute, or legal claim is outstanding. We cannot delete those on your behalf; the
 app store’s and RevenueCat’s privacy policies explain how to contact them.</p>
 
+<p><strong>Analytics data.</strong> PostHog keeps analytics events for up to <strong>one year</strong> and
+session replays for <strong>30 days</strong>, then deletes them. When you delete an account
+you had signed in to, we ask PostHog to delete your profile and its recordings
+sooner — normally within a day. Turning off Share analytics stops new
+collection but does not shorten these periods for data already collected.</p>
+
 <p><strong>Anonymous accounts.</strong> An account with no email address attached cannot be
 recovered by us or by you — there is nothing to identify it with. If you lose
 your device, uninstall the app, or clear its data, that garden is gone.</p>
@@ -459,9 +503,11 @@ borders, we take steps to ensure it remains protected in accordance with
 applicable law. By using the Services, you understand that your personal
 information may be transferred to countries outside your country of residence.</p>
 
-<p>Our subscription-management provider, RevenueCat, is based in the United States,
-and the app store that takes your payment operates globally and transfers
-payment information internationally. Each relies on its own transfer safeguards,
+<p>Our subscription-management provider, RevenueCat, is based in the United States;
+our product-analytics provider, PostHog, stores analytics data and screen
+replays in the United States (Virginia); and the app store that takes your
+payment operates globally and transfers payment information internationally.
+Each relies on its own transfer safeguards,
 such as the European Commission’s Standard Contractual Clauses (with the UK
 Addendum where applicable) and, where applicable, certification under the
 EU–U.S., UK, and Swiss–U.S. Data Privacy Frameworks.</p>
@@ -546,7 +592,8 @@ personal information:</p>
 <ul>
   <li><strong>Identifiers</strong> (e.g., email address, device identifiers, IP address).</li>
   <li><strong>Internet or other electronic network activity</strong> (e.g., app usage and
-interaction data).</li>
+interaction data, and sampled screen replays with typed text and images
+masked).</li>
   <li><strong>Geolocation data</strong> (approximate location only: a general, city-level area
 inferred from your IP address, and the climate or frost band you tell us you
 garden in. We do not collect precise GPS location).</li>
@@ -606,8 +653,9 @@ administer a subscription you have purchased through the app store.</li>
   <li><strong>Consent</strong> — for camera/photo access, notifications, and any processing that
 requires consent. You may withdraw consent at any time.</li>
   <li><strong>Legitimate interests</strong> — to secure the Services, prevent abuse, understand
-usage, and improve our features, where those interests are not overridden by
-your rights.</li>
+usage through product analytics and sampled session replay (which you can
+switch off in the app at any time), and improve our features, where those
+interests are not overridden by your rights.</li>
   <li><strong>Legal obligation</strong> — to comply with applicable law and respond to lawful
 requests, including tax, accounting, and anti-money-laundering obligations
 attached to payments.</li>
