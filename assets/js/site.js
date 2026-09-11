@@ -8,7 +8,7 @@
 
    Apple ID 6798338126 — see the app repo's CODEX_BACKLOG.md. */
 
-const SUPPORT_EMAIL = 'support@getgardenai.com';
+const SUPPORT_EMAIL = 'support@kipostracker.com';
 
 /* 1. Contact forms. No server, so the browser's own mail app does the
       sending. The address is also printed beside every form as a plain

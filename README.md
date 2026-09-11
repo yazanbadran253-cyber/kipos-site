@@ -92,7 +92,7 @@ screenshots appear twice in the markup — same files, so no extra bytes.
 ### The forms have no backend
 
 GitHub Pages serves files and runs nothing, so `site.js` builds a `mailto:` to
-`support@getgardenai.com` and hands it to the visitor's own mail app. Every form
+`support@kipostracker.com` and hands it to the visitor's own mail app. Every form
 also prints that address as a plain link beside it, which is the path when the
 machine has no mail client. If you ever want silent submission, that needs a
 third-party form service — it cannot be done from Pages alone.
