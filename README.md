@@ -33,7 +33,7 @@ Do not restore Porkbun's default parking records for the site. In particular,
 
 ## The site
 
-Four hand-written pages, no build step. Shared `assets/css/site.css`, and one
+Hand-written pages with no build step. Shared `assets/css/site.css`, and one
 small `assets/js/site.js`.
 
 | File | What it is |
@@ -42,21 +42,19 @@ small `assets/js/site.js`.
 | `faq.html` | Full FAQ, native `<details>`, no JavaScript |
 | `support.html` | Contact form, subscription/deletion/privacy shortcuts |
 | `press.html` | Press form, boilerplate, downloadable assets, brand hexes |
+| `compare/kipos-vs-growit/index.html` | Sourced Kipos and GrowIt comparison |
+| `compare/kipos-vs-planta/index.html` | Sourced Kipos and Planta comparison |
+| `guides/plant-growth-stage-tracker/index.html` | Practical growth-stage guide and CSV template |
+| `guides/balcony-garden-journal/index.html` | Practical balcony journal guide and CSV template |
 
-### The App Store link is one constant
+### App Store links and attribution
 
-Kipos is not released, so every store badge renders as a non-clickable
-"Coming soon" pill. On release day set **one value** at the top of
-`assets/js/site.js`:
+Kipos is live. Every badge contains a normal App Store link in the HTML, so the
+link works without JavaScript. New marketing links also have a
+`data-app-campaign` value. See `ATTRIBUTION.md` for the naming convention and
+the one real provider token needed to activate Apple campaign attribution.
 
-```js
-const APP_STORE_URL = 'https://apps.apple.com/app/id6798338126';
-```
-
-Every badge on every page becomes a real link, and the "coming soon" notes
-under them are removed. Nothing else needs editing. The badge markup ships in
-the honest coming-soon state, so a browser with JavaScript off never sees a
-download link that does not work.
+Do not invent or guess the Apple provider token.
 
 ### Motion (home page only)
 

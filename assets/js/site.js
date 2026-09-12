@@ -9,6 +9,19 @@
    Apple ID 6798338126 — see the app repo's CODEX_BACKLOG.md. */
 
 const SUPPORT_EMAIL = 'support@kipostracker.com';
+/* Apple supplies this value in App Store Connect. Leave it empty until the
+   real provider token is available; campaign links require both pt and ct. */
+const APP_STORE_PROVIDER_TOKEN = '';
+
+if (APP_STORE_PROVIDER_TOKEN) {
+  document.querySelectorAll('a[data-app-campaign]').forEach(function (link) {
+    var url = new URL(link.href);
+    url.searchParams.set('pt', APP_STORE_PROVIDER_TOKEN);
+    url.searchParams.set('ct', link.dataset.appCampaign);
+    url.searchParams.set('mt', '8');
+    link.href = url.toString();
+  });
+}
 
 /* 1. Contact forms. No server, so the browser's own mail app does the
       sending. The address is also printed beside every form as a plain

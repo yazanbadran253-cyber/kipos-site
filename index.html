@@ -3,22 +3,40 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kipos — Keep every plant on track</title>
-<meta name="description" content="Kipos is a garden care tracker for iPhone. Give every plant its own watering, feeding and light schedule, log care in two taps, and watch your garden grow.">
+<title>Kipos Garden Tracker | Keep a living record of your plants</title>
+<meta name="description" content="Track plant phases, care, photos and notes in Kipos. Build a visual history of your balcony, container or small garden on iPhone.">
 <link rel="canonical" href="https://kipostracker.com/">
 <link rel="icon" href="assets/kipos-mark.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon.png" sizes="any">
 <link rel="apple-touch-icon" href="assets/icon.png">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://kipostracker.com/">
-<meta property="og:title" content="Kipos — Keep every plant on track">
-<meta property="og:description" content="A garden care tracker for iPhone. Every plant gets its own watering, feeding and light schedule.">
+<meta property="og:title" content="Kipos Garden Tracker | Your garden's living record">
+<meta property="og:description" content="Track plant phases, care, photos and notes. See what changed across your balcony, container or small garden.">
 <meta property="og:image" content="https://kipostracker.com/assets/icon.png">
 <meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=TikTok+Sans:opsz,wght@12..36,400;12..36,500;12..36,600;12..36,700;12..36,800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Kipos - Garden Tracker",
+  "applicationCategory": "LifestyleApplication",
+  "operatingSystem": "iOS 15.1 or later",
+  "url": "https://kipostracker.com/",
+  "downloadUrl": "https://apps.apple.com/app/id6798338126",
+  "description": "An iPhone garden tracker for plant care, phases, photos, notes and shareable garden records.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "description": "Free download. Ongoing tracking requires a subscription; the yearly plan includes a 14-day trial."
+  }
+}
+</script>
 </head>
 <body>
 
@@ -28,13 +46,14 @@
   <div class="wrap nav__in">
     <a class="brand" href="./"><img src="assets/kipos-mark.svg" alt="" width="34" height="34">Kipos</a>
     <nav class="nav__links" aria-label="Main">
-      <a href="#how">How it works</a>
-      <a href="#features">Features</a>
+      <a href="#record">Your garden record</a>
+      <a href="compare/kipos-vs-growit/">Compare</a>
+      <a href="guides/plant-growth-stage-tracker/">Guides</a>
       <a href="faq.html">FAQ</a>
       <a href="press.html">Press</a>
       <a href="support.html">Support</a>
     </nav>
-    <a class="storebadge" href="https://apps.apple.com/app/id6798338126" rel="noopener">
+    <a class="storebadge" href="https://apps.apple.com/app/id6798338126" rel="noopener" data-app-campaign="website_home_nav">
       <svg width="20" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
       <span class="storebadge__t">
         <small>Download on the</small>
@@ -49,10 +68,10 @@
   <section class="hero">
     <div class="wrap hero__in">
       <div class="hero__copy">
-        <p class="eyebrow">Daily care tracker</p>
-        <h1>Keep every plant on track.</h1>
-        <p class="lede">Kipos gives every plant on your windowsill, balcony or plot its own watering, feeding and light schedule, then shows you what needs doing today.</p>
-        <a class="storebadge" href="https://apps.apple.com/app/id6798338126" rel="noopener">
+        <p class="eyebrow">Garden tracker for iPhone</p>
+        <h1>Keep the story of what you grow.</h1>
+        <p class="lede">Kipos keeps each plant's phase, care, photos and notes together. See what changed, what needs attention today and how your garden got here.</p>
+        <a class="storebadge" href="https://apps.apple.com/app/id6798338126" rel="noopener" data-app-campaign="website_home_hero">
           <svg width="22" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
           <span class="storebadge__t">
             <small>Download on the</small>
@@ -77,28 +96,28 @@
     </div>
   </section>
 
-  <section class="sec" id="how">
+  <section class="sec" id="record">
     <div class="wrap">
       <div class="sec__head center" data-stagger data-drift>
-        <p class="eyebrow">How it works</p>
-        <h2>Three steps, then it runs itself.</h2>
-        <p class="lede">No spreadsheets, and no trying to remember whether you watered the basil on Tuesday.</p>
+        <p class="eyebrow">A record you can use</p>
+        <h2>Know where each plant has been.</h2>
+        <p class="lede">A reminder tells you what is due. A record also shows the phase, photos, notes and care that led to today.</p>
       </div>
       <ol class="steps" data-stagger>
         <li class="step">
           <div class="step__n" aria-hidden="true">1</div>
-          <h3>Add what you're growing</h3>
-          <p>Scan a plant with the camera or add it by hand. Tell Kipos which room or bed it lives in and how much light that spot gets.</p>
+          <h3>Start a plant card</h3>
+          <p>Scan a plant or add it by name. Record its location, growing setup and light so its history begins with useful context.</p>
         </li>
         <li class="step">
           <div class="step__n" aria-hidden="true">2</div>
-          <h3>Get a care plan</h3>
-          <p>Kipos works out a watering, feeding and light schedule for each plant, based on the spot you put it in and the climate where you live.</p>
+          <h3>Record care and change</h3>
+          <p>Keep the plant's current phase, photos, notes and completed care in one place. Its timeline becomes clearer as the season moves.</p>
         </li>
         <li class="step">
           <div class="step__n" aria-hidden="true">3</div>
-          <h3>Log it in two taps</h3>
-          <p>Open the app, see what is due today, tick it off. The schedule rolls forward on its own and your streak keeps counting.</p>
+          <h3>See the whole garden</h3>
+          <p>Daily tasks keep care moving. Plant scores, streaks and the Garden Score give you a quick view across the collection.</p>
         </li>
       </ol>
     </div>
@@ -116,16 +135,16 @@
           <div class="feature__ico i-water" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg>
           </div>
-          <h3>Watering log</h3>
-          <p>One watering per plant per day, recorded with the date. Look back and see exactly when each plant last had a drink.</p>
+          <h3>Growth phases</h3>
+          <p>Record the phase each plant is in, then add a photo or note when something changes.</p>
         </article>
 
         <article class="feature">
           <div class="feature__ico i-sun" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
           </div>
-          <h3>Daily care streak</h3>
-          <p>Clear the day's tasks and the streak grows. Miss a day and there is a little grace built in, because gardens are not exams.</p>
+          <h3>Care history</h3>
+          <p>Completed tasks stay connected to the plant, so you can look back instead of relying on memory.</p>
         </article>
 
         <article class="feature">
@@ -140,8 +159,8 @@
           <div class="feature__ico i-cam" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
           </div>
-          <h3>Photo journal</h3>
-          <p>Photograph a plant whenever you like. The pictures stack up into a record of how it changed over the season.</p>
+          <h3>Photos and notes</h3>
+          <p>Add photos and observations to a plant card. Over time, they show the changes a task list cannot.</p>
         </article>
 
         <article class="feature">
@@ -160,6 +179,38 @@
           <p>Feeding is its own schedule, not an afterthought bolted onto watering. Set a cadence per plant and Kipos reminds you when it is due.</p>
         </article>
 
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec--tint" aria-labelledby="learn-title">
+    <div class="wrap">
+      <div class="sec__head">
+        <p class="eyebrow">Compare and learn</p>
+        <h2 id="learn-title">Choose the record that fits your garden.</h2>
+        <p class="lede">The comparisons use current public product listings and say where another app is the stronger choice. The guides work with a notebook, a spreadsheet or Kipos.</p>
+      </div>
+      <div class="linkcards">
+        <a class="linkcard" href="compare/kipos-vs-growit/">
+          <span class="linkcard__type">Comparison</span>
+          <strong>Kipos vs GrowIt</strong>
+          <span>Personal garden history or edible-garden planning?</span>
+        </a>
+        <a class="linkcard" href="compare/kipos-vs-planta/">
+          <span class="linkcard__type">Comparison</span>
+          <strong>Kipos vs Planta</strong>
+          <span>A focused small-garden record or a mature plant-care platform?</span>
+        </a>
+        <a class="linkcard" href="guides/plant-growth-stage-tracker/">
+          <span class="linkcard__type">Guide</span>
+          <strong>Track plant growth stages</strong>
+          <span>A simple method, with a free CSV template.</span>
+        </a>
+        <a class="linkcard" href="guides/balcony-garden-journal/">
+          <span class="linkcard__type">Guide</span>
+          <strong>Keep a balcony garden journal</strong>
+          <span>Record what matters without making it a chore.</span>
+        </a>
       </div>
     </div>
   </section>
@@ -261,7 +312,7 @@
     <div class="wrap">
       <h2>Track it. Share it.</h2>
       <p>Daily care streak · Watering log · Photo journal · Garden score · Shareable cards</p>
-      <a class="storebadge" href="https://apps.apple.com/app/id6798338126" rel="noopener">
+      <a class="storebadge" href="https://apps.apple.com/app/id6798338126" rel="noopener" data-app-campaign="website_home_footer">
         <svg width="22" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
         <span class="storebadge__t">
           <small>Download on the</small>
@@ -278,22 +329,23 @@
     <div class="foot__grid">
       <div class="foot__brand">
         <a class="brand" href="./"><img src="assets/kipos-mark.svg" alt="" width="34" height="34">Kipos</a>
-        <p>A garden care tracker for people who would rather be gardening than remembering.</p>
+        <p>Plant phases, care, photos and notes in one living garden record.</p>
       </div>
       <div>
         <h3 class="foot__h">Product</h3>
         <ul>
-          <li><a href="#how">How it works</a></li>
+          <li><a href="#record">Your garden record</a></li>
           <li><a href="#features">Features</a></li>
           <li><a href="faq.html">FAQ</a></li>
         </ul>
       </div>
       <div>
-        <h3 class="foot__h">Company</h3>
+        <h3 class="foot__h">Explore</h3>
         <ul>
-          <li><a href="press.html">Press</a></li>
-          <li><a href="support.html">Support</a></li>
-          <li><a href="mailto:support@getgardenai.com">Contact</a></li>
+          <li><a href="compare/kipos-vs-growit/">Kipos vs GrowIt</a></li>
+          <li><a href="compare/kipos-vs-planta/">Kipos vs Planta</a></li>
+          <li><a href="guides/plant-growth-stage-tracker/">Growth-stage guide</a></li>
+          <li><a href="guides/balcony-garden-journal/">Balcony journal guide</a></li>
         </ul>
       </div>
       <div>
