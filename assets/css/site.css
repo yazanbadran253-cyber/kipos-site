@@ -314,6 +314,7 @@ a.storebadge:hover { transform: translateY(-2px); box-shadow: var(--shadow-lift)
 
 .phone {
   position: relative;
+  display: block;
   width: 100%;
   max-width: 310px;
   padding: 10px;
@@ -321,6 +322,7 @@ a.storebadge:hover { transform: translateY(-2px); box-shadow: var(--shadow-lift)
   background: linear-gradient(160deg, var(--dark-alt), var(--dark));
   box-shadow: var(--shadow-lift);
 }
+a.phone:hover { text-decoration: none; }
 .phone img { border-radius: 37px; width: 100%; }
 .phone::before {
   content: '';
@@ -413,7 +415,7 @@ a.storebadge:hover { transform: translateY(-2px); box-shadow: var(--shadow-lift)
 @media (max-width: 980px) { .features { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 640px) { .features { grid-template-columns: 1fr; } }
 
-/* ---- showcase: one sticky phone, three screens ---- */
+/* ---- showcase: one sticky phone, four screens ---- */
 
 .swap__grid {
   display: grid;
@@ -428,11 +430,12 @@ a.storebadge:hover { transform: translateY(-2px); box-shadow: var(--shadow-lift)
 .ticks li { display: flex; gap: 12px; align-items: flex-start; color: var(--body); font-size: 1.02rem; }
 .ticks svg { flex: none; width: 22px; height: 22px; color: var(--green); margin-top: 2px; }
 
-/* All three screens are absolute, so the box needs its own height — hence the
+/* All four screens are absolute, so the box needs its own height — hence the
    aspect ratio, taken from the screenshots themselves (620x1341). Absolute
    positioning for every one of them is what lets z-index order the crossfade;
    a static first child would ignore z-index entirely. */
 .swap__screens { position: relative; aspect-ratio: 620 / 1341; }
+.store-loop { display: block; }
 .swap__screens img {
   position: absolute;
   inset: 0;
@@ -445,6 +448,32 @@ a.storebadge:hover { transform: translateY(-2px); box-shadow: var(--shadow-lift)
 /* Without JavaScript exactly one screenshot shows, which is the right fallback:
    one real screen beats three stacked on top of each other. */
 .swap__screens img:first-child { opacity: 1; }
+
+.swap__download .storebadge { margin-top: var(--s4); }
+.swap__stage::before, .swap__stage::after,
+.swap__download .swap__inline::before, .swap__download .swap__inline::after {
+  content: '';
+  position: absolute;
+  width: 72px;
+  height: 44px;
+  border-radius: 100% 0 100% 0;
+  z-index: 0;
+}
+.swap__stage::before, .swap__download .swap__inline::before {
+  background: var(--green-soft);
+  transform: rotate(-24deg);
+  left: 4%;
+  top: 20%;
+}
+.swap__stage::after, .swap__download .swap__inline::after {
+  background: var(--blue-soft);
+  transform: rotate(154deg);
+  right: 2%;
+  bottom: 18%;
+}
+.swap__stage::before, .swap__stage::after { opacity: 0; transition: opacity .3s var(--ease); }
+.swap__stage.is-download::before, .swap__stage.is-download::after { opacity: 1; }
+.swap__stage .phone, .swap__download .swap__inline .phone { z-index: 1; }
 
 @media (min-width: 901px) {
   .swap__inline { display: none; }
@@ -484,6 +513,7 @@ a.storebadge:hover { transform: translateY(-2px); box-shadow: var(--shadow-lift)
   .swap__block { padding-block: var(--s4); }
   .swap__inline { display: flex; justify-content: center; margin-top: var(--s4); }
   .swap__inline .phone { max-width: 280px; }
+  .swap__download .swap__inline { position: relative; isolation: isolate; }
 }
 
 /* ---- phone motion layers ---- */
@@ -914,4 +944,7 @@ a.storebadge:hover { transform: translateY(-2px); box-shadow: var(--shadow-lift)
   /* The idle bob is infinite, so capping duration is not enough — stop it. */
   .phone-float { animation: none; }
   .reveal { opacity: 1; transform: none; }
+  .swap__stage { display: none; }
+  .swap__inline { display: flex; justify-content: center; margin-top: var(--s4); }
+  .swap__inline .phone { max-width: 280px; }
 }

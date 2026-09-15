@@ -113,6 +113,7 @@
   mm.add('(min-width: 901px)', function () {
     var screens = gsap.utils.toArray('.swap__screen');
     var blocks = gsap.utils.toArray('.swap__block');
+    var stage = document.querySelector('.swap__stage');
     if (screens.length < 2 || !blocks.length) return;
 
     // Crossfade by stacking, not by dipping both screens to half opacity at
@@ -122,11 +123,14 @@
     // completely covered.
     var current = -1;
     var cleanup;
+    var loopBack;
 
     function show(i) {
       if (i === current) return;
       var previous = current;
       current = i;
+      if (loopBack) loopBack.kill();
+      if (stage) stage.classList.toggle('is-download', i === screens.length - 1);
 
       screens.forEach(function (screen, j) {
         gsap.set(screen, { zIndex: j === i ? 2 : (j === previous ? 1 : 0) });
@@ -145,6 +149,9 @@
           if (j !== i) gsap.set(screen, { autoAlpha: 0 });
         });
       });
+      if (i === screens.length - 1) {
+        loopBack = gsap.delayedCall(2.4, function () { show(i - 1); });
+      }
     }
     gsap.set(screens[0], { autoAlpha: 1, zIndex: 2 });
     gsap.set(screens.slice(1), { autoAlpha: 0, zIndex: 0 });
@@ -189,10 +196,44 @@
 
     return function () {
       if (cleanup) cleanup.kill();
+      if (loopBack) loopBack.kill();
       if (syncFrame) window.cancelAnimationFrame(syncFrame);
       window.removeEventListener('scroll', requestSync);
       window.removeEventListener('resize', requestSync);
+      if (stage) stage.classList.remove('is-download');
       gsap.set(screens, { clearProps: 'opacity,visibility,zIndex' });
+    };
+  });
+
+  mm.add('(max-width: 900px)', function () {
+    var listing = document.querySelector('.store-listing');
+    var app = document.querySelector('.store-app');
+    if (!listing || !app) return;
+    var back;
+    gsap.set(listing, { autoAlpha: 0, zIndex: 2 });
+    gsap.set(app, { autoAlpha: 1, zIndex: 1 });
+
+    function replay() {
+      if (back) back.kill();
+      gsap.set(listing, { autoAlpha: 0 });
+      gsap.to(listing, { autoAlpha: 1, duration: 0.45, ease: 'power2.out', overwrite: 'auto' });
+      back = gsap.delayedCall(2.4, function () {
+        gsap.to(listing, { autoAlpha: 0, duration: 0.45, ease: 'power2.out' });
+      });
+    }
+
+    var trigger = ScrollTrigger.create({
+      trigger: listing,
+      start: 'top 85%',
+      end: 'bottom 15%',
+      onEnter: replay,
+      onEnterBack: replay
+    });
+
+    return function () {
+      if (back) back.kill();
+      trigger.kill();
+      gsap.set([listing, app], { clearProps: 'opacity,visibility,zIndex' });
     };
   });
 
