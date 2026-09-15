@@ -44,6 +44,7 @@ small `assets/js/site.js`.
 | `press.html` | Press form, boilerplate, downloadable assets, brand hexes |
 | `compare/kipos-vs-growit/index.html` | Sourced Kipos and GrowIt comparison |
 | `compare/kipos-vs-planta/index.html` | Sourced Kipos and Planta comparison |
+| `alternatives/planta-alternatives/index.html` | Sourced list of five Planta alternatives, Kipos first, with FAQ schema |
 | `guides/plant-growth-stage-tracker/index.html` | Practical growth-stage guide and CSV template |
 | `guides/balcony-garden-journal/index.html` | Practical balcony journal guide and CSV template |
 

@@ -710,6 +710,56 @@ a.storebadge:hover { transform: translateY(-2px); box-shadow: var(--shadow-lift)
 }
 .template-link:hover { background: var(--blue-soft); text-decoration: none; }
 
+/* ---- alternatives pages ---- */
+
+.alt-list { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--s3); }
+.alt-list > li + li { margin-top: 0; }
+.alt {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: var(--s4);
+  box-shadow: var(--shadow-card);
+}
+.alt--pick { border-top: 4px solid var(--green); }
+.alt__head { display: flex; align-items: flex-start; gap: 14px; }
+.alt__n {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--green-soft);
+  color: var(--green-deep);
+  font-weight: 800;
+}
+.alt__head h3 { margin: 0; font-size: 1.35rem; }
+.alt__for { margin: 4px 0 0; color: var(--muted); font-size: .95rem; }
+.alt__stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: var(--s3) 0;
+  padding: 14px 16px;
+  background: var(--chip);
+  border-radius: var(--r-sm);
+  font-size: .92rem;
+}
+.alt__stats div { min-width: 0; }
+.alt__stats dt { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--green-deep); }
+.alt__stats dd { margin: 2px 0 0; color: var(--ink); }
+.alt__cols { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s3); margin-top: var(--s3); }
+.alt__cols h4 { margin: 0 0 8px; font-size: .95rem; }
+.alt__cols ul { margin: 0; padding-left: 1.2em; font-size: .95rem; }
+.alt__store { display: inline-block; margin-top: var(--s3); font-size: .95rem; font-weight: 600; }
+
+@media (max-width: 720px) {
+  .alt { padding: var(--s3); }
+  .alt__stats { grid-template-columns: 1fr 1fr; }
+  .alt__cols { grid-template-columns: 1fr; }
+}
+
 @media (max-width: 720px) {
   .choice-grid, .linkcards { grid-template-columns: 1fr; }
   .compare-summary, .tipbox, .example-card { padding: var(--s3); }
