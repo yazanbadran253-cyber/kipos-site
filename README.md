@@ -45,6 +45,12 @@ small `assets/js/site.js`.
 | `compare/kipos-vs-growit/index.html` | Sourced Kipos and GrowIt comparison |
 | `compare/kipos-vs-planta/index.html` | Sourced Kipos and Planta comparison |
 | `alternatives/planta-alternatives/index.html` | Sourced list of five Planta alternatives, Kipos first, with FAQ schema |
+| `alternatives/blossom-alternatives/index.html` | Sourced list of five Blossom alternatives, Kipos first, with FAQ schema |
+| `alternatives/flora-alternatives/index.html` | Sourced list of five Flora alternatives, Kipos first, with FAQ schema |
+| `alternatives/plant-parent-alternatives/index.html` | Sourced list of five Plant Parent alternatives, Kipos first, with FAQ schema |
+| `alternatives/planty-alternatives/index.html` | Sourced list of five Planty alternatives, Kipos first, with FAQ schema |
+| `alternatives/picturethis-alternatives/index.html` | Sourced list of five PictureThis alternatives, Kipos first, with FAQ schema |
+| `alternatives/plantin-alternatives/index.html` | Sourced list of five PlantIn alternatives, Kipos first, with FAQ schema |
 | `guides/plant-growth-stage-tracker/index.html` | Practical growth-stage guide and CSV template |
 | `guides/balcony-garden-journal/index.html` | Practical balcony journal guide and CSV template |
 
