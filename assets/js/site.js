@@ -11,13 +11,17 @@
 const SUPPORT_EMAIL = 'support@kipostracker.com';
 /* Apple supplies this value in App Store Connect. Leave it empty until the
    real provider token is available; campaign links require both pt and ct. */
-const APP_STORE_PROVIDER_TOKEN = '';
+const APP_STORE_PROVIDER_TOKEN = '129236192';
 
+/* ct is the page token, prefixed with the landing page's utm_source when
+   there is one, so an ad click reads gads_alt_planta_card and an organic
+   visit reads alt_planta_card. Apple caps ct at 30 characters. */
 if (APP_STORE_PROVIDER_TOKEN) {
+  var source = new URLSearchParams(location.search).get('utm_source');
   document.querySelectorAll('a[data-app-campaign]').forEach(function (link) {
     var url = new URL(link.href);
     url.searchParams.set('pt', APP_STORE_PROVIDER_TOKEN);
-    url.searchParams.set('ct', link.dataset.appCampaign);
+    url.searchParams.set('ct', (source ? source + '_' : '') + link.dataset.appCampaign);
     url.searchParams.set('mt', '8');
     link.href = url.toString();
   });
