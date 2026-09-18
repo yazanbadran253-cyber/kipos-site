@@ -1,7 +1,7 @@
 /* Kipos marketing site.
    Palette and radii are lifted from the app, not invented:
    src/theme.js (C / X / SOFT / N) and Kipos-AppStore-1024.svg.
-   Blue is the brand (it is the icon's leaf); green is the growth accent. */
+   Green is the brand (it is the icon's leaf) and the growth accent; blue is water. */
 
 :root {
   /* ink */
