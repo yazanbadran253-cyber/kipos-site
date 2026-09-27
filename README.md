@@ -53,6 +53,7 @@ small `assets/js/site.js`.
 | `alternatives/plantin-alternatives/index.html` | Sourced list of five PlantIn alternatives, Kipos first, with FAQ schema |
 | `guides/plant-growth-stage-tracker/index.html` | Practical growth-stage guide and CSV template |
 | `guides/balcony-garden-journal/index.html` | Practical balcony journal guide and CSV template |
+| `no-ai/index.html` | Says Kipos does not use AI: what the app does, what it leaves out, where photos go |
 
 ### App Store links and attribution
 

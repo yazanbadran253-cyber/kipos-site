@@ -59,7 +59,7 @@
 
       <h1 id="kipos-privacy-policy">Kipos Privacy Policy</h1>
 
-<p><strong>Effective Date: September 11, 2026</strong></p>
+<p><strong>Effective Date: September 26, 2026</strong></p>
 
 <p>This Privacy Policy (the “Policy”) describes how Kipos (“Kipos,” “we,”
 “our,” or “us”) collects, uses, discloses, and otherwise processes your personal
@@ -125,16 +125,19 @@ Google or Apple identity if you sign in that way — and the data you already en
 is preserved.</li>
   <li><strong>Plant and garden data.</strong> Information you enter about your plants and your care
 activity, including plant names, plant types/species, locations (for example,
-“kitchen windowsill”), notes you write, care schedules, and the care actions you
-log (such as watering, feeding, and light).</li>
+“kitchen windowsill”), notes you write, how often you water each plant, and the
+care actions you log (such as watering, feeding, pruning, and other actions you
+name), with any note you add to them.</li>
   <li><strong>Onboarding answers.</strong> When you first set up Kipos we ask a short series of
-questions and keep your answers: how you heard about Kipos, the growing space
-available to you, your main gardening goal and the difficulty you most want
-help with, the climate or frost band you tell us you garden in, whether you
-used a gardening app before, and how much time a day you want to spend. We use
-these to tailor your care plan and the plants we suggest.</li>
-  <li><strong>Plant photos.</strong> If you choose to add a photo to a plant, or scan a plant with
-your camera, we collect the image you capture or upload. A plant photo may show
+questions and keep your answers: whether you have plants growing, how you
+heard about Kipos, whether you used a gardening app before, and how much time
+a day you want to spend. Versions 1.1.2 and earlier also asked about your
+growing space, the difficulty you most wanted help with, and your climate, and
+we keep those answers if you gave them. We use your answer about how you heard
+about Kipos to count which channels bring people to the account screen.</li>
+  <li><strong>Plant photos.</strong> If you choose to add a photo to a plant (or, in versions
+1.1.2 and earlier, scan a plant with your camera), we collect the image you
+capture or upload. A plant photo may show
 parts of your home, balcony, or yard in the background — please frame it so it
 shows only what you are comfortable sharing. Camera and photo-library access
 are used only for these features and only after you grant the relevant device
@@ -153,30 +156,31 @@ addresses reveal a general, city-level location; we do <strong>not</strong> coll
 GPS location, and the app never asks for location permission. If something
 goes wrong while our backend is handling a request, the error is recorded in
 those same logs, and that record can include your account identifier.</li>
-  <li><strong>Service usage counters.</strong> We count how many plant scans each account makes
-per day, so that we can enforce a fair-use limit on a feature that costs us
-money to run.</li>
+  <li><strong>Service usage counters.</strong> For app versions 1.1.2 and earlier, we count how
+many AI requests (plant scans and care plans) each account makes per day, so
+that we can enforce a fair-use limit on features that cost us money to run.</li>
   <li><strong>Product analytics.</strong> We use <strong>PostHog</strong>, a product-analytics service, to
 understand how the app is used and to find problems. When you use Kipos, the
 app sends PostHog the screens you open, the actions you take (for example
-"started a plant scan" or "logged a watering"), and a small set of technical
+“added a plant” or “logged a watering”), and a small set of technical
 details: app version, operating system and version, language, time zone, and
 screen size. It does <strong>not</strong> send your email address, your name, your plant
 names or notes, your photos, the text you type, or your device model. Counts
 are sent as ranges and errors as categories, not as their contents. Until you
 save your progress, this activity is tied to a random identifier that PostHog
 generates; once you sign in, it is tied to your Kipos account identifier —
-never your email — so that one account's activity is seen as one. PostHog
+never your email — so that one account’s activity is seen as one. PostHog
 works out your <strong>country and city from your IP address and then discards the
-address</strong>; it does not keep your IP. Our own servers also report the outcome
-of each plant-identification and care-plan request — how long it took,
+address</strong>; it does not keep your IP. For app versions 1.1.2 and earlier, our
+own servers also report the outcome of each plant-identification and care-plan
+request — how long it took,
 whether it succeeded, and how much AI capacity it used — but never the photo,
 your answers, or the result.</li>
   <li><strong>Session replay.</strong> For a small sample of sessions — at most <strong>1 in 10</strong> in
 the released app — PostHog also records a short screen replay: taps,
 scrolling, and timing, so we can see how a screen behaves. Replay runs on a
-limited set of screens and never on sign-in, camera, scan-result,
-subscription, or account screens. <strong>Everything you type and every image is
+limited set of screens and never on sign-in, camera, subscription, or account
+screens. <strong>Everything you type and every image is
 hidden in the recording before it leaves your device.</strong> Console logs and
 network traffic are not recorded. Replays are deleted after <strong>30 days</strong>.</li>
   <li><strong>Your control.</strong> The <strong>Share analytics</strong> switch on your Profile screen turns
@@ -184,7 +188,7 @@ both of these off at any time. Turning it off stops collection immediately;
 it does not delete what was already collected, which ages out on the schedule
 under <a href="#how-long-we-keep-your-information">How Long We Keep Your Information</a>.
 If you have signed in, deleting your account also deletes your PostHog
-profile and its recordings; an anonymous account's activity is tied only to
+profile and its recordings; an anonymous account’s activity is tied only to
 the random identifier above and ages out on the same schedule. The switch is
 kept on your device, so it stays off after you sign out or delete your
 account.</li>
@@ -294,10 +298,10 @@ by law.</p>
 
 <ul>
   <li><strong>Provide the Services.</strong> Create and manage your account, store your garden and
-plant data, generate personalized care plans and reminders, and run the
-day-to-day operation of the app.</li>
-  <li><strong>Identify plants.</strong> Process the photos you capture through our plant-scanning
-feature to return an identification and care information (see
+plant data and care history, schedule the watering reminders you set, and run
+the day-to-day operation of the app.</li>
+  <li><strong>Run older AI features.</strong> For app versions 1.1.2 and earlier, process plant
+photos and plant details to return an identification or a care plan (see
 <a href="#ai-and-automated-processing">AI and Automated Processing</a> below).</li>
   <li><strong>Send notifications.</strong> Deliver the plant-care reminders you have enabled.
 These reminders are scheduled <strong>on your device</strong> by the app; we do not operate
@@ -314,7 +318,7 @@ administrative messages such as changes to our terms or policies.</li>
 problems, fix crashes, and develop new and improved features.</li>
   <li><strong>Maintain security and prevent abuse.</strong> Protect the Services and our users,
 detect and prevent fraud, and prevent misuse of resource-intensive features
-(such as automated abuse of the plant-scan feature).</li>
+(such as automated abuse of the AI features in older app versions).</li>
   <li><strong>Comply with law.</strong> Meet our legal obligations and respond to lawful requests.</li>
   <li><strong>Business transactions.</strong> Evaluate or complete a merger, acquisition,
 financing, reorganization, or sale of assets, where permitted by law.</li>
@@ -324,8 +328,9 @@ financing, reorganization, or sale of assets, where permitted by law.</li>
 
 <h2 id="ai-and-automated-processing">AI and Automated Processing</h2>
 
-<p>Some features of Kipos use artificial intelligence to give you a better
-experience:</p>
+<p><strong>The current version of Kipos does not send your photos or garden data to an AI
+provider.</strong> App versions 1.1.2 and earlier included the AI features below. They
+keep working for anyone still using those versions:</p>
 
 <ul>
   <li><strong>Plant identification.</strong> When you scan a plant, the photo is sent to our
@@ -364,7 +369,7 @@ described below:</p>
   <li><strong>Service providers.</strong> We share information with vendors who process it on our
 behalf to run the Services, including our backend, database, authentication and
 photo-storage host (<strong>Supabase</strong>), our AI provider for plant identification and
-care personalization (<strong>Anthropic</strong>), our email delivery provider
+care personalization in app versions 1.1.2 and earlier (<strong>Anthropic</strong>), our email delivery provider
 (<strong>Resend</strong>), which sends the one-time codes described above, and our
 product-analytics provider (<strong>PostHog</strong>), which receives the usage data and
 sampled screen replays described under
@@ -427,8 +432,8 @@ device and shared only where you choose to send it.</p>
 
 <ul>
   <li><strong>Camera and photos.</strong> You can grant or revoke the app’s camera and
-photo-library permissions at any time in your device settings. Some features
-(scanning and adding plant photos) will not work without them.</li>
+photo-library permissions at any time in your device settings. Adding plant
+photos will not work without them.</li>
   <li><strong>Notifications.</strong> You can turn plant-care reminders on or off in the app and
 manage notification permissions in your device settings.</li>
   <li><strong>Analytics.</strong> The <strong>Share analytics</strong> switch on your Profile screen turns
@@ -648,7 +653,8 @@ information:</p>
 
 <ul>
   <li><strong>Performance of a contract</strong> — to create your account and provide the
-Services you request (including plant identification and care plans), and to
+Services you request (including, in app versions 1.1.2 and earlier, plant
+identification and care plans), and to
 administer a subscription you have purchased through the app store.</li>
   <li><strong>Consent</strong> — for camera/photo access, notifications, and any processing that
 requires consent. You may withdraw consent at any time.</li>
@@ -664,7 +670,8 @@ attached to payments.</li>
 <p><strong>Your rights.</strong> You have the rights to access, rectification, erasure,
 restriction of processing, objection to processing (including direct marketing),
 data portability, and to withdraw consent. Where we use automated processing (such
-as AI plant identification and care personalization), you may request more
+as AI plant identification and care personalization in app versions 1.1.2 and
+earlier), you may request more
 information; these features do not produce legal or similarly significant effects
 about you.</p>
 
